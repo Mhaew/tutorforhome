@@ -280,6 +280,7 @@
             });
 
             // Open Add Employee Modal
+            // Open Add Employee Modal
             $('#addMemberBtn').click(function() {
                 $('#addMemberModal').modal('show');
             });
@@ -287,8 +288,21 @@
             $('#addMemberForm').submit(function(e) {
                 e.preventDefault();
 
+                var username = $('#username_add').val();
                 var password = $('#password_add').val();
                 var confirmPassword = $('#password_confirmation_add').val();
+
+                // ตรวจสอบความยาวของ username
+                if (username.length < 8 || username.length > 16) {
+                    alert('Username ต้องมีความยาวระหว่าง 8 ถึง 16 ตัวอักษร');
+                    return;
+                }
+
+                // ตรวจสอบความยาวของ password
+                if (password.length < 8 || password.length > 16) {
+                    alert('Password ต้องมีความยาวระหว่าง 8 ถึง 16 ตัวอักษร');
+                    return;
+                }
 
                 // ตรวจสอบรหัสผ่านและยืนยันรหัสผ่านให้ตรงกัน
                 if (password !== confirmPassword) {
@@ -298,7 +312,7 @@
 
                 // ตรวจสอบข้อมูลที่กรอก
                 var data = {
-                    username: $('#username_add').val(),
+                    username: username,
                     first_name: $('#first_name_add').val(),
                     last_name: $('#last_name_add').val(),
                     email: $('#email_add').val(),
@@ -324,6 +338,7 @@
                     }
                 });
             });
+
 
             $('#usersTable').on('click', '.deleteBtn', function() {
                 var userId = $(this).data('id'); // ดึง user_id จากปุ่ม
