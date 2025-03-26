@@ -1,0 +1,531 @@
+body {
+    display: flex;
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+}
+
+.sidebar {
+    width: 20%;
+    height: 100vh;
+    background-color: #F9FAFB;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #20232D;
+    transition: color 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:active {
+    color: #EE090A;
+}
+
+.content {
+    width: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.content-header a {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.content-header a.active {
+    background-color: #e31b23;
+    /* สีพื้นหลังสำหรับปุ่มที่เลือก */
+    color: white;
+}
+
+.content-header a.inactive {
+    background-color: #aaa;
+    /* สีพื้นหลังสำหรับปุ่มที่ไม่ได้เลือก */
+    color: white;
+}
+
+.content-header a:hover {
+    background-color: #cc1b1f;
+    /* สีพื้นหลังเมื่อ hover */
+    color: white;
+}
+
+
+
+.content-main {
+    display: flex;
+    font-family: 'Nunito', sans-serif;
+    gap: 20px;
+}
+
+
+
+
+.course-list h3 {
+    /* margin-top: 0; */
+    font-family: 'Nunito', sans-serif;
+    background-color: lightgray;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    /* เพิ่มขอบมล */
+    font-size: 16px;
+}
+
+.course-list hr {
+    margin-top: 0;
+    margin-bottom: 10px;
+    /* คุณสามารถปรับค่านี้ตามต้องการ */
+    border: none;
+    border-top: 1px solid #000000;
+    /* สีและความหนาของเส้น hr */
+}
+
+.course-list p {
+    margin: 5px 0;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+.course-details {
+    width: 60%;
+    font-family: 'Nunito', sans-serif;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.course-details h1 {
+    font-size: 30px;
+    color: #000;
+}
+
+.input-group {
+    display: flex;
+    /* align-items: center; */
+    width: 100%;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #F9FAFB;
+    margin-top: 10px;
+    outline: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.input-group .input-large {
+    flex: 2;
+    /* ขยายช่องกรอกข้อมูลแรกให้กว้างกว่าช่องที่สอง */
+    max-width: 80%;
+    /* ขนาดสูงสุด */
+}
+
+.input-group .input-small {
+    flex: 1;
+    /* ขนาดของช่องกรอกข้อมูลที่สอง */
+    max-width: 20%;
+    /* ขนาดสูงสุด */
+}
+
+.input-group input:focus,
+.input-group input:active {
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+}
+
+.search-container {
+    position: fixed;
+    top: 10px;
+    /* ระยะห่างจากด้านบนของหน้าต่างเบราว์เซอร์ */
+    right: 10px;
+    /* ระยะห่างจากด้านขวาของหน้าต่างเบราว์เซอร์ */
+    z-index: 1000;
+    /* ทำให้กล่องค้นหามีลำดับชั้นสูงสุด */
+    background-color: #fff;
+    /* เพิ่มพื้นหลังเพื่อให้กล่องค้นหามองเห็นได้ชัดเจน */
+    padding: 5px;
+    /* เพิ่ม padding เพื่อให้กล่องค้นหามีพื้นที่รอบๆ */
+    border-radius: 5px;
+    /* เพิ่มขอบมนเพื่อความสวยงาม */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* เพิ่มเงาเบาๆ */
+}
+
+#searchBox {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    /* ขนาดของกล่องค้นหา */
+    box-sizing: border-box;
+}
+
+.icons button {
+    width: 36px;
+    height: 36px;
+    padding: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.icons img {
+    width: 25px;
+    height: 25px;
+}
+
+.save-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.save-button button {
+    background-color: #e31b23;
+    color: white;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: #20232D;
+    transition: color 0.3s;
+}
+
+a:hover,
+a:active {
+    color: #EE090A;
+}
+
+.link-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.link-list li {
+    margin: 10px 0;
+}
+
+
+.link-list li a.add-course {
+    display: inline-block;
+    background-color: #908b8b;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.link-list li a.add-course:hover {
+    color: white;
+}
+
+h1 {
+    font-size: 35px;
+    font-family: 'Nunito', sans-serif;
+    color: #000;
+    text-align: left;
+    width: 100%;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+    color: #20232D;
+
+}
+
+p {
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: #20232D;
+}
+
+.term-item {
+    text-align: left;
+    font-size: 35px;
+    margin: 5px 0;
+}
+
+.course-item {
+    text-align: left;
+    font-size: 35px;
+    margin: 5px 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button.inactive {
+    background-color: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+    font-size: 14px;
+}
+
+.term-box {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    background-color: #f9f9f9;
+    width: 51%;
+}
+
+.term-box.selected {
+    background-color: #d3d3d3;
+}
+
+.course-box {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    /* border-radius: 5px; */
+    cursor: pointer;
+    background-color: #f9f9f9;
+    width: 51%;
+}
+
+.course-box.selected {
+    background-color: #d3d3d3;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .content-main {
+        flex-direction: column;
+    }
+
+    .course-list {
+        width: 100%;
+        margin-right: 0;
+        height: auto;
+    }
+
+    .course-details {
+        width: 100%;
+    }
+}
+
+.data-container {
+    padding: 10px;
+    border-radius: 5px;
+    width: 330px;
+    font-size: 30px;
+    margin: 0;
+}
+
+.courses-container {
+    display: block; /* Ensure the container is displayed */
+}
+
+.course-items {
+    display: none; /* Initially hide the course items */
+}
+
+.term-item {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #fff;
+    /* margin-bottom: 10px; */
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.term-item.selected {
+    background-color: #e0e0e0;
+}
+
+.course-item {
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #fff;
+    /* margin-bottom: 10px; */
+    cursor: pointer;
+    font-size: 20px;
+
+}
+
+.course-item.selected {
+    background-color: #e0e0e0;
+}
+
+.input-group input.small-input {
+    width: 100px;
+    flex: none;
+}
+
+
+/* ปรับแต่งขนาดปุ่มแก้ไขและลบ */
+.edit-course,
+.delete-course {
+    width: 30px;
+    /* กำหนดความกว้างของปุ่ม */
+    height: 30px;
+    /* กำหนดความสูงของปุ่ม */
+    padding: 5px;
+    /* กำหนด padding รอบไอคอน */
+    border: none;
+    /* เอาเส้นขอบออก */
+    background-color: transparent;
+    /* พื้นหลังโปร่งใส */
+    cursor: pointer;
+    /* เปลี่ยนเคอร์เซอร์เป็น pointer */
+}
+
+
+.edit-course img,
+.delete-course img {
+    width: 100%;
+    /* ทำให้ไอคอนขยายเต็มขนาดของปุ่ม */
+    height: 100%;
+    /* ทำให้ไอคอนขยายเต็มขนาดของปุ่ม */
+}
+
+
+.btn-circle {
+    border-radius: 50%;
+    /* ทำให้ปุ่มเป็นรูปวงกลม */
+    width: 35px;
+    /* กำหนดขนาดของปุ่ม */
+    height: 35px;
+    /* กำหนดขนาดของปุ่ม */
+    padding: 0;
+    /* ลบ padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.content {
+    padding-top: 80px; /* เพิ่ม padding ให้กับ content เพื่อไม่ให้ถูก navbar บัง */
+}
+
+.menu-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #20232D; /* สีที่ต้องการ */
+    margin-top: 10px;
+    margin-bottom: 15px; /* เพิ่มระยะห่างจากรายการเมนู */
+    text-align: center; /* จัดข้อความให้ตรงกลาง */
+}
+
+.btn-circlee {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btn-grey {
+    background-color: #6c757d;
+    /* สีเทา */
+}
+
+.btn-blue {
+    background-color: #007bff;
+    /* สีน้ำเงิน */
+}
+
+.btn-green {
+    background-color: #28a745;
+    /* สีเขียว */
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    /* จัดแนวปุ่มให้ตรงกลางในแนวตั้ง */
+    gap: 10px;
+    /* ระยะห่างระหว่างปุ่ม */
+}
+
+#confirm-payment {
+    background-color: #4169E1;
+    /* ขนาดตัวอักษร */
+}
+

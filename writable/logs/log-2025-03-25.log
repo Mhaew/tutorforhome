@@ -1,0 +1,271 @@
+CRITICAL - 2025-03-25 17:20:30 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "welcome_message.php"
+[Method: GET, Route: /]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('welcome_message.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('welcome_message', [], true)
+ 3 APPPATH\Controllers\Home.php(9): view('welcome_message')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-25 17:20:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:22:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:22:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:22:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:23:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:24:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:24:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 17:24:03 --> {
+    "draw": 1,
+    "recordsTotal": 3,
+    "recordsFiltered": 3,
+    "data": [
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"18\">",
+            "18",
+            "kittima wongsawatt",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e15\u0e38\u0e25\u0e32\u0e04\u0e21 2567   \u0e40\u0e17\u0e2d\u0e21 2\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e21.3",
+            "5000 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-success btn-circle btn-sm\"><\/button>"
+        ],
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"12\">",
+            "12",
+            "Sittichai Thana",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e40\u0e21\u0e29\u0e32\u0e22\u0e19 2567   \u0e40\u0e17\u0e2d\u0e21 1\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e1b.2",
+            "2000 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-primary btn-circle btn-sm\"><\/button>"
+        ],
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"19\">",
+            "19",
+            "kittima wongsawatt",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e40\u0e21\u0e29\u0e32\u0e22\u0e19 2567   \u0e40\u0e17\u0e2d\u0e21 1\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e1b.1",
+            "1500 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-primary btn-circle btn-sm\"><\/button>"
+        ]
+    ]
+}
+INFO - 2025-03-25 17:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:33:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:42:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:45:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 17:45:50 --> {
+    "draw": 1,
+    "recordsTotal": 3,
+    "recordsFiltered": 3,
+    "data": [
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"18\">",
+            "18",
+            "kittima wongsawatt",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e15\u0e38\u0e25\u0e32\u0e04\u0e21 2567   \u0e40\u0e17\u0e2d\u0e21 2\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e21.3",
+            "5000 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-success btn-circle btn-sm\"><\/button>"
+        ],
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"12\">",
+            "12",
+            "Sittichai Thana",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e40\u0e21\u0e29\u0e32\u0e22\u0e19 2567   \u0e40\u0e17\u0e2d\u0e21 1\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e1b.2",
+            "2000 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-primary btn-circle btn-sm\"><\/button>"
+        ],
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"19\">",
+            "19",
+            "kittima wongsawatt",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e40\u0e21\u0e29\u0e32\u0e22\u0e19 2567   \u0e40\u0e17\u0e2d\u0e21 1\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e1b.1",
+            "1500 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-primary btn-circle btn-sm\"><\/button>"
+        ]
+    ]
+}
+INFO - 2025-03-25 17:45:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:45:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:46:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:46:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:53:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:53:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:54:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:55:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:56:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:58:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:58:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:58:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 17:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:05:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:08:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:08:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:19:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:19:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:19:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:29:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:31:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:31:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:32:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:32:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:33:24 --> Received term_list_data: ซัมเมอร์ ตุลาคม 2567 เทอม 2/2567
+INFO - 2025-03-25 18:33:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:34:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:34:16 --> Received term_list_data: ซัมเมอร์ ตุลาคม 2568 เทอม 3/2567
+INFO - 2025-03-25 18:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:35:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:35:06 --> Received term_list_data: ซัมเมอร์ เมษายน 2567 เทอม 1/2567
+INFO - 2025-03-25 18:35:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:35:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:35:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:37:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:38:57 --> Updating Term ID: 15, New Name: 
+INFO - 2025-03-25 18:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:39:04 --> Updating Term ID: 14, New Name: 
+INFO - 2025-03-25 18:39:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:41:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:41:19 --> Updating Term ID: 15, New Name: ซัมเมอร์ ตุลาคม 2568   เทอม 2/2567ดดดด
+INFO - 2025-03-25 18:41:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:41:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:41:34 --> Updating Term ID: 15, New Name: ซัมเมอร์ ตุลาคม 2568   เทอม 2/2567
+INFO - 2025-03-25 18:41:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:43:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:43:11 --> Updating Term ID: 15, New Name: 
+INFO - 2025-03-25 18:43:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:43:27 --> Updating Term ID: 15, New Name: 
+INFO - 2025-03-25 18:43:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:43:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:44:06 --> Updating Term ID: 15, New Name: 
+DEBUG - 2025-03-25 18:44:15 --> Updating Term ID: 15, New Name: 
+DEBUG - 2025-03-25 18:44:23 --> Updating Term ID: 15, New Name: 
+INFO - 2025-03-25 18:45:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:45:43 --> Updating Term ID: 15, New Name: ซัมเมอร์ ตุลาคม 2568   เทอม 2/2567
+DEBUG - 2025-03-25 18:45:50 --> Updating Term ID: 15, New Name: ซัมเมอร์ ตุลาคม 2568 เทอม 3/2567
+DEBUG - 2025-03-25 18:46:01 --> Updating Term ID: 15, New Name: 	ซัมเมอร์ ตุลาคม 2568 เทอม 2/2568
+INFO - 2025-03-25 18:46:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:46:35 --> Updating Term ID: 15, New Name: ซัมเมอร์ เมษายน 2568 เทอม 1/2568
+INFO - 2025-03-25 18:46:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:47:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:47:37 --> Updating Term ID: 14, New Name: 	ซัมเมอร์ เมษายน 2568 เทอม 1/2568
+INFO - 2025-03-25 18:47:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:47:48 --> Updating Term ID: 14, New Name: ซัมเมอร์ เมษายน 2568   เทอม 1/2568
+DEBUG - 2025-03-25 18:47:53 --> Updating Term ID: 15, New Name: ซัมเมอร์ เมษายน 2568   เทอม 1/2568
+INFO - 2025-03-25 18:48:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:48:16 --> Updating Term ID: 15, New Name: ซัมเมอร์ เมษายน 2568 เทอม 1/2568
+INFO - 2025-03-25 18:48:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:48:31 --> Updating Term ID: 15, New Name: ซัมเมอร์ เมษายน 2567 เทอม 1/2567
+INFO - 2025-03-25 18:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:48:38 --> Updating Term ID: 10, New Name: ซัมเมอร์ เมษายน 2567 เทอม 1/2567
+DEBUG - 2025-03-25 18:48:44 --> Updating Term ID: 14, New Name: ซัมเมอร์ เมษายน 2567 เทอม 1/2567
+INFO - 2025-03-25 18:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:48:54 --> Received term_list_data: ซัมเมอร์ เมษายน 2567 เทอม 1/2567
+DEBUG - 2025-03-25 18:49:03 --> Updating Term ID: 15, New Name: ซัมเมอร์ เมษายน 2567 เทอม 1/256777
+INFO - 2025-03-25 18:49:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:49:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:49:27 --> {
+    "draw": 1,
+    "recordsTotal": 3,
+    "recordsFiltered": 3,
+    "data": [
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"18\">",
+            "18",
+            "kittima wongsawatt",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e15\u0e38\u0e25\u0e32\u0e04\u0e21 2567   \u0e40\u0e17\u0e2d\u0e21 2\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e21.3",
+            "5000 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-success btn-circle btn-sm\"><\/button>"
+        ],
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"12\">",
+            "12",
+            "Sittichai Thana",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e40\u0e21\u0e29\u0e32\u0e22\u0e19 2567   \u0e40\u0e17\u0e2d\u0e21 1\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e1b.2",
+            "2000 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-primary btn-circle btn-sm\"><\/button>"
+        ],
+        [
+            "<input type=\"checkbox\" class=\"row-checkbox\" value=\"19\">",
+            "19",
+            "kittima wongsawatt",
+            "\u0e0b\u0e31\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c \u0e40\u0e21\u0e29\u0e32\u0e22\u0e19 2567   \u0e40\u0e17\u0e2d\u0e21 1\/2567",
+            "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19 \u0e1b.1",
+            "1500 \u0e1a\u0e32\u0e17",
+            "\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e15\u0e47\u0e21\u0e08\u0e33\u0e19\u0e27\u0e19",
+            "<button class=\"btn btn-primary btn-circle btn-sm\"><\/button>"
+        ]
+    ]
+}
+INFO - 2025-03-25 18:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:49:33 --> getStudentCountByTerm - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:33 --> getStudentCount - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:33 --> getStudentCountByTerm - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:33 --> getStudentCount - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:34 --> getStudentCountByTerm - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:34 --> getStudentCount - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:36 --> getStudentCountByTerm - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:36 --> getStudentCount - Term ID: 8 - Count: 1
+INFO - 2025-03-25 18:49:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-25 18:49:37 --> getStudentCountByTerm - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:37 --> getStudentCount - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:38 --> getStudentCountByTerm - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:38 --> getStudentCount - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:38 --> getStudentCountByTerm - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:38 --> getStudentCount - Term ID: 8 - Count: 1
+DEBUG - 2025-03-25 18:49:39 --> getStudentCountByTerm - Term ID: 7 - Count: 2
+DEBUG - 2025-03-25 18:49:39 --> getStudentCount - Term ID: 7 - Count: 2
+INFO - 2025-03-25 18:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:49:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-25 18:49:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
