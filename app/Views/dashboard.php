@@ -112,8 +112,7 @@
                 {
                     "data": "id",
                     "render": function(data, type, row) {
-                        return '<button class="btn btn-warning btn-edit" data-id="' + data + '">แก้ไข</button>' +
-                            '<button class="btn btn-danger deleteBtn" data-id="' + data + '">ลบ</button>';
+                        return '<button class="btn btn-warning btn-edit" data-id="' + data + '">แก้ไข</button>' ;
                     }
                 }
             ]

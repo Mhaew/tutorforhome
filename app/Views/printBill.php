@@ -199,7 +199,7 @@
             <?php if ($user_status === 'manager'): ?>
                 <!-- ปุ่ม เพิ่มยอดชำระ -->
                 <button id="openPayMoreModal" class="btn btn-warning">เพิ่มยอดชำระ</button>
-                <button id="deleteSelected" class="btn btn-danger">ลบที่เลือก</button>
+                <!-- <button id="deleteSelected" class="btn btn-danger">ลบที่เลือก</button> -->
             <?php endif; ?>
             <!-- ปุ่มลบสำหรับข้อมูลที่เลือก -->
         </div>

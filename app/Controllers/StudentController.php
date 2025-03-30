@@ -165,7 +165,7 @@ class StudentController extends Controller
                         $row['open'] . ' คน',
                         ($row['open'] - $row['count_students']) . ' คน',
                         '<button class="btn-editOpen" data-id="' . $row['ID_Study'] . '" data-open="' . $row['open'] . '" data-course-id="' . $row['Course_id'] . '">แก้ไขจำนวนเปิดรับ</button>'
-                            . '<button class="btn-delete" data-id="' . $row['ID_Study'] . '">ลบ</button>',
+                            ,
                     ];
                 }, $data)
             ]);
@@ -234,16 +234,31 @@ class StudentController extends Controller
     {
         $request = $this->request;
         $courseModel = new CourseModel();
-
+        $studyModel = new StudyModel();
+    
         $courseId = $request->getPost('id');
         $newOpenCount = $request->getPost('open');
-
+    
         // ตรวจสอบข้อมูลที่ได้รับ
         if (empty($courseId) || empty($newOpenCount)) {
             return $this->response->setJSON(['success' => false, 'error' => 'กรุณากรอกข้อมูลให้ครบถ้วน']);
         }
-
+    
         try {
+            // ดึงข้อมูล count_students สำหรับ courseId ที่เลือก
+            $query = $studyModel->select('COUNT(*) as count_students')
+                ->join('course', 'study.ID_Courses = course.id', 'left')
+                ->where('course.id', $courseId)
+                ->groupBy('course.id')
+                ->first();
+    
+            $countStudents = $query ? $query['count_students'] : 0; // ถ้าไม่พบข้อมูลให้กำหนดเป็น 0
+    
+            // ตรวจสอบว่า newOpenCount ต้องไม่น้อยกว่า count_students
+            if ($newOpenCount < $countStudents) {
+                return $this->response->setJSON(['success' => false, 'error' => 'จำนวนที่เปิดรับต้องไม่น้อยกว่าจำนวนผู้ลงทะเบียน']);
+            }
+    
             // อัพเดตจำนวน open ในคอร์ส
             $courseModel->updateCourse($courseId, ['open' => $newOpenCount]);
             return $this->response->setJSON(['success' => true]);
@@ -251,6 +266,7 @@ class StudentController extends Controller
             return $this->response->setJSON(['success' => false, 'error' => $e->getMessage()]);
         }
     }
+    
 
     public function getStudentsByCourse()
     {

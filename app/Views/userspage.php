@@ -245,8 +245,7 @@
                         title: '',
                         render: function(data, type, row) {
                             if ('<?= $user_status ?>' === 'manager') {
-                                return `<button class="btn btn-warning" onclick="editUser(${row.id_member})">แก้ไข</button>
-                                    <button class="btn btn-danger" onclick="deleteUser(${row.id_member})">ลบ</button>`;
+                                return `<button class="btn btn-warning" onclick="editUser(${row.id_member})">แก้ไข</button>`;
                             }
                             return '';
                         }

@@ -263,12 +263,8 @@
 
                             // ถ้า data ตรงกับ session_user_id ให้แสดงปุ่มแก้ไข
                             if (data == session_user_id) {
-                                return '<button class="btn btn-warning btn-edit" data-id="' + data + '">แก้ไข</button>' +
-                                    '<button class="btn btn-danger deleteBtn" data-id="' + data + '">ลบ</button>';
-                            } else if ('<?= $user_status ?>' === 'manager') {
-                                // ถ้าไม่ใช่เจ้าของไอดี ให้แสดงปุ่มลบ
-                                return '<button class="btn btn-danger deleteBtn" data-id="' + data + '">ลบ</button>';
-                            } else if ('<?= $user_status ?>' === 'admin') {
+                                return '<button class="btn btn-warning btn-edit" data-id="' + data + '">แก้ไข</button>' 
+                            }  else if ('<?= $user_status ?>' === 'admin') {
                                 return '<button class="btn btn-warning btn-edit" data-id="' + data + '">แก้ไข</button>'
                             } else {
                                 return '';

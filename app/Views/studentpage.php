@@ -183,9 +183,9 @@
         <br>
 
         <h1 id="student-count">จำนวนนักเรียนทั้งหมด .... คน </h1>
-        <a href="javascript:void(0);" id="print-students" class="btn btn-primary">
+        <!-- <a href="javascript:void(0);" id="print-students" class="btn btn-primary">
             <i class="fas fa-print"></i> รายชื่อนักเรียน
-        </a>
+        </a> -->
         <input type="hidden" id="courseIdInput" />
         <div>
             <br>
@@ -204,6 +204,9 @@
                     </tr>
                 </thead>
             </table>
+            <button id="print-names" class="btn btn-primary">
+                <i class="fas fa-print"></i> พิมพ์รายชื่อ
+            </button>
         </div>
     </div>
 
@@ -364,7 +367,7 @@
                     },
                     {
                         data: 7,
-                        title: 'จำนวนที่เหลือ',
+                        title: 'จำนวนที่ว่างอยู่',
                         visible: true,
                         className: 'text-center',
                     },
@@ -380,6 +383,12 @@
             if (userStatus !== 'manager') { // ซ่อนคอลัมน์ 'จำนวนที่เหลือ'
                 table.column(8).visible(false); // ซ่อนคอลัมน์ 'จัดการ'
             }
+
+            if (userStatus == 'manager') { // ซ่อนคอลัมน์ 'จำนวนที่เหลือ'
+                table.column(0).visible(false); // ซ่อนคอลัมน์ 'จัดการ'
+            }
+
+
         });
 
 
