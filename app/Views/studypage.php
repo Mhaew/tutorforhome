@@ -67,23 +67,17 @@
         }
 
         .course-item {
-            background-color: #e2e2e2;
-            /* พื้นหลังสีคอร์ส */
-            padding: 12px;
-            /* ระยะห่างภายใน */
-            margin: 8px 0;
-            /* ระยะห่างระหว่างรายการ */
-            border-radius: 4px;
+            background-color: #f1f1f1;
+            /* พื้นหลังสีอ่อน */
             /* มุมโค้งมน */
             cursor: pointer;
-            /* แสดงเป็นคลิกได้ */
-            transition: background-color 0.3s ease;
-            /* การเปลี่ยนแปลงสีเมื่อ hover */
+            /* ให้แสดงเป็นคลิกได้ */
+            text-align: left;
+            /* จัดข้อความให้เริ่มจากซ้าย */
         }
 
         .course-item:hover {
-            background-color: #c4c4c4;
-            /* เปลี่ยนสีเมื่อ hover */
+            background-color: #dcdcdc;
         }
     </style>
 </head>

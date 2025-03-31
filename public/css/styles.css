@@ -89,8 +89,6 @@ body {
 }
 
 
-
-
 .course-list h3 {
     /* margin-top: 0; */
     font-family: 'Nunito', sans-serif;
@@ -394,23 +392,21 @@ p {
     display: block; /* Ensure the container is displayed */
 }
 
-.course-items {
-    display: none; /* Initially hide the course items */
-}
 
-.term-item {
+
+/* .term-item {
     border: 1px solid #ddd;
     padding: 5px;
     border-radius: 3px;
     background-color: #fff;
-    /* margin-bottom: 10px; */
+
     cursor: pointer;
     font-size: 20px;
 }
 
 .term-item.selected {
     background-color: #e0e0e0;
-}
+} */
 
 .course-item {
     border: 1px solid #ddd;
