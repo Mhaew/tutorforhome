@@ -174,7 +174,8 @@
         <div class="input-group">
 
             <div class="data-container">
-                <label for="terms">เลือกเทอม▾</label>
+                <h1>เลือกเทอม▾</h1>
+                <!-- <label for="terms"></label> -->
                 <input type="hidden" id="termInput" name="termInput" value="">
                 <?php if ($session->get('logged_in')) : ?>
                     <?php if (isset($terms)) : ?>
@@ -186,9 +187,10 @@
                     <?php else : ?>
                         <p><?php echo htmlspecialchars($message); ?></p>
                     <?php endif; ?>
+                <?php else : ?>
+                    <!-- สามารถใส่ข้อความหรือปล่อยให้ว่างได้ -->
                 <?php endif; ?>
             </div>
-
 
             <div class="data-container courses-container">
                 <label for="courses">เลือกคอร์ส▾</label>
@@ -349,7 +351,21 @@
                                 termId
                             })
                         });
-                        const courses = await response.json();
+                        const result = await response.json();
+
+                        // ตรวจสอบว่า API ส่งผลลัพธ์ที่มี success = true หรือไม่
+                        if (result.success === false) {
+                            console.error('Error:', result.message); // แสดงข้อความข้อผิดพลาด
+                            alert(result.message); // แสดงข้อความให้ผู้ใช้ทราบ
+                            return; // หยุดการทำงานหากไม่พบข้อมูล
+                        }
+
+                        const courses = result.courses; // สมมติว่า API ส่งข้อมูลคอร์สใน result.courses
+
+                        if (!Array.isArray(courses)) {
+                            console.error('Expected an array of courses, but received:', courses);
+                            return;
+                        }
 
                         let coursesContainer = document.querySelector('.data-container:nth-child(2)');
 
@@ -480,6 +496,28 @@
                         return; // หยุดการดำเนินการหากไม่ผ่านเงื่อนไข
                     }
 
+                    // ตรวจสอบว่า balance และ Total ต้องไม่น้อยกว่าศูนย์เมื่อชำระเป็นมัดจำ และ Total ต้องไม่ต่ำกว่า 2800
+                    if (Status_Price.value === 'deposit') {
+                        const totalAmount = parseFloat(Total.value); // ค่า Total ที่กรอก
+                        const balanceAmount = parseFloat(balance.value); // ค่า balance ที่คำนวณ
+
+                        if (balanceAmount <= 0 || totalAmount <= 0) {
+                            alert('ยอดชำระต้องไม่ต่ำกว่า 2800 บาท และต้องไม่เท่ากับหรือมากกว่าราคาจริง กรุณากรอกอีกครั้ง');
+                            return; // หยุดการดำเนินการหากไม่ผ่านเงื่อนไข
+                        }
+
+                        // ตรวจสอบว่า Total ต้องไม่ต่ำกว่า 2800
+                        if (totalAmount < 2800) {
+                            alert('ยอดชำระต้องไม่ต่ำกว่า 2800 บาท และต้องไม่เท่ากับหรือมากกว่าราคาจริง กรุณากรอกอีกครั้ง');
+                            return; // หยุดการดำเนินการหากไม่ผ่านเงื่อนไข
+                        }
+                    }
+
+
+
+
+
+
                     // Debugging with get() method
                     console.log(formData.get('ID_Terms'));
                     console.log(formData.get('ID_Courses'));
@@ -520,7 +558,7 @@
                                 alert('ข้อมูลถูกบันทึกแล้ว!');
                                 location.reload();
                             } else {
-                                alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
+                                alert('กรุณากรอกข้อมูลให้ครบถ้วน');
                             }
                         })
                         .catch(error => {

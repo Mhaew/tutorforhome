@@ -106,22 +106,26 @@ class Studypage extends Controller
         }
     }
 
-
-
     public function getCourses()
     {
         $termId = $this->request->getPost('termId');
-        $courseModel = new CourseModel();
-
-        // Validate termId
-        $term = $courseModel->find($termId);
+        $dashboardModel = new DashboardModel(); // ใช้ DashboardModel เพื่อค้นหาเทอม
+    
+        // ตรวจสอบว่าเทอมที่เลือกมีอยู่จริง
+        $term = $dashboardModel->find($termId);
         if (!$term) {
             return $this->response->setJSON(['success' => false, 'message' => 'ไม่พบข้อมูลเทอม']);
         }
-
-        // Fetch courses for the selected term
+    
+        // ดึงคอร์สที่ตรงกับ termId
+        $courseModel = new CourseModel();
         $courses = $courseModel->where('id_term', $termId)->findAll();
-
-        return $this->response->setJSON($courses);
+    
+        if (empty($courses)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'ไม่พบข้อมูลคอร์สในเทอมนี้']);
+        }
+    
+        return $this->response->setJSON(['success' => true, 'courses' => $courses]);
     }
+    
 }

@@ -71,6 +71,7 @@ class BillController extends Controller
             study.ID_Study, 
             study.Firstname_S, 
             study.Lastname_S, 
+            study.balance,
             course.Course_name, 
             course.Price_DC, 
             study.Total, 
@@ -258,75 +259,83 @@ class BillController extends Controller
         try {
             $amount = $this->request->getPost('paymentAmount');
             $study_ids = $this->request->getPost('study_ids'); // รับค่า study_ids ที่เป็น array
-
+    
             log_message('debug', 'Received Study IDs: ' . implode(',', $study_ids)); // ตรวจสอบค่า study_ids
-
+    
             if (empty($amount) || empty($study_ids)) {
                 log_message('error', 'ข้อมูลไม่ถูกต้อง: paymentAmount หรือ study_ids ว่าง');
                 return $this->response->setJSON(['success' => false, 'message' => 'ข้อมูลไม่ถูกต้อง']);
             }
-
+    
             // คำสั่งที่ใช้ในการอัปเดตข้อมูล
             $studyModel = new StudyModel();
-            $courseModel = new CourseModel(); // สร้างโมเดลสำหรับตาราง course
-
+            $courseModel = new CourseModel(); // ใช้สำหรับดึงข้อมูล Price_DC
+    
             foreach ($study_ids as $study_id) {
                 $study = $studyModel->find($study_id);
-
+    
                 if (!$study) {
                     log_message('error', 'ไม่พบข้อมูลสำหรับ ID_Study: ' . $study_id);
-                    continue; // ข้าม ID ที่ไม่พบข้อมูล
+                    continue;
                 }
-
+    
                 // ตรวจสอบสถานะของการชำระเงิน
                 if ($study['Status_Price'] === 'full') {
-                    // หากสถานะเป็น "full" ให้แสดงข้อความแจ้งเตือน
                     log_message('info', 'ไม่สามารถเพิ่มยอดชำระสำหรับ ID_Study: ' . $study_id . ' เนื่องจากสถานะเป็น "full"');
                     return $this->response->setJSON(['success' => false, 'message' => 'ได้ชำระครบแล้ว']);
                 }
-
-                // ดึงข้อมูลจากตาราง course เพื่อหาค่า Price_DC
-                $course = $courseModel->find($study['ID_Courses']); // สมมติว่าในตาราง study มี `course_id` ที่เชื่อมโยงกับตาราง course
-
+    
+                // ดึงข้อมูลราคา Price_DC จากตาราง course
+                $course = $courseModel->find($study['ID_Courses']);
+    
                 if (!$course) {
                     log_message('error', 'ไม่พบข้อมูลสำหรับ Course ID: ' . $study['ID_Courses']);
-                    continue; // ข้ามการดำเนินการนี้หากไม่พบข้อมูล
+                    continue;
                 }
-
-                $priceDC = $course['Price_DC']; // ค่า Price_DC จากตาราง course
-
+    
+                $priceDC = floatval($course['Price_DC']); // ราคาเต็มของคอร์ส
+                $currentTotal = floatval($study['Total']); // ยอดชำระปัจจุบัน
+                $currentBalance = floatval($study['balance']); // ยอดคงเหลือปัจจุบัน
+    
+                // คำนวณ Total ใหม่
+                $newTotal = $currentTotal + floatval($amount);
+    
                 // ตรวจสอบว่า newTotal จะเกิน Price_DC หรือไม่
-                $newTotal = $study['Total'] + $amount;
-
                 if ($newTotal > $priceDC) {
-                    // หากยอดชำระเกินราคาให้แสดงข้อผิดพลาด
                     log_message('info', 'ยอดชำระเกินราคาสำหรับ ID_Study: ' . $study_id);
                     return $this->response->setJSON(['success' => false, 'message' => 'ไม่สามารถชำระเกินราคาครอสได้']);
                 }
-
-                // ถ้าสถานะไม่ใช่ "full" และยอดชำระไม่เกิน Price_DC ทำการอัปเดตยอดชำระ
-                if (!$studyModel->update($study_id, ['Total' => $newTotal])) {
+    
+                // คำนวณ balance ใหม่
+                $newBalance = max($currentBalance - floatval($amount), 0); // ห้ามติดลบ
+    
+                // อัปเดตค่า Total และ balance
+                $updateData = [
+                    'Total' => $newTotal,
+                    'balance' => $newBalance
+                ];
+    
+                // ถ้า Total ถึง Price_DC แล้ว ให้เปลี่ยนสถานะเป็น full
+                if ($newTotal >= $priceDC) {
+                    $updateData['Status_Price'] = 'full';
+                }
+    
+                // อัปเดตข้อมูลในฐานข้อมูล
+                if (!$studyModel->update($study_id, $updateData)) {
                     log_message('error', 'ไม่สามารถอัปเดตข้อมูลสำหรับ ID_Study: ' . $study_id);
                     continue;
                 }
-
-                // ตรวจสอบว่า Total เท่ากับ Price_DC แล้วหรือไม่
-                if ($newTotal >= $priceDC) {
-                    // ถ้า Total เท่ากับ Price_DC หรือมากกว่า ให้เปลี่ยนสถานะเป็น "full"
-                    if (!$studyModel->update($study_id, ['Status_Price' => 'full'])) {
-                        log_message('error', 'ไม่สามารถอัปเดตสถานะเป็น full สำหรับ ID_Study: ' . $study_id);
-                    } else {
-                        log_message('info', 'สถานะ ID_Study: ' . $study_id . ' ถูกเปลี่ยนเป็น "full"');
-                    }
-                }
+    
+                log_message('info', 'อัปเดตยอดชำระสำเร็จสำหรับ ID_Study: ' . $study_id);
             }
-
+    
             return $this->response->setJSON(['success' => true]);
         } catch (\Exception $e) {
             log_message('error', 'เกิดข้อผิดพลาด: ' . $e->getMessage());
             return $this->response->setJSON(['success' => false, 'message' => 'เกิดข้อผิดพลาด: ' . $e->getMessage()]);
         }
     }
+    
 
 
     public function payMore()

@@ -46,10 +46,16 @@ class StudyModel extends Model
      */
     public function getStudyByTermAndCourseId(int $termId, int $courseId): array
     {
-        return $this->where('ID_Terms', $termId)
-            ->where('ID_Courses', $courseId)
-            ->findAll();
+        $result = $this->where('ID_Terms', $termId)
+                       ->where('ID_Courses', $courseId)
+                       ->findAll();
+    
+        log_message('debug', 'Study Data: ' . json_encode($result)); // Log ค่า balance
+    
+        return $result;
     }
+    
+    
 
     public function getStudentCountByTerm($termId)
     {
@@ -63,25 +69,24 @@ class StudyModel extends Model
     public function getStudiesWithCourses($length, $start, $search = '', $termId = null)
     {
         $builder = $this->db->table($this->table)
-            ->select('study.ID_Study, study.Firstname_S, study.Lastname_S, course.Course_name')
+            ->select('study.ID_Study, study.Firstname_S, study.Lastname_S, study.balance, course.Course_name')
             ->join('course', 'study.ID_Courses = course.ID_Courses', 'left')
             ->orderBy('study.ID_Study', 'ASC');
-
+    
         if ($termId) {
             $builder->where('study.ID_Terms', $termId);
         }
-
+    
         if (!empty($search)) {
             $builder->groupStart()
                 ->like('study.Firstname_S', $search)
                 ->orLike('study.Lastname_S', $search)
                 ->groupEnd();
         }
-
+    
         return $builder->limit($length, $start)->get()->getResultArray();
     }
-
-
+    
     public function countStudiesWithCourses($search = '', $termId = null)
     {
         $searchTerms = explode(' ', trim($search));

@@ -220,7 +220,8 @@
                         <?php else : ?>
                             <!-- สามารถใส่ข้อความหรือปล่อยให้ว่างได้ -->
                         <?php endif; ?>
-                    </div><br><br><br><br><br><br><br>
+                    </div>
+                    <br><br><br><br><br><br><br>
                     <div class="data-container courses-container">
                         <label for="courses">คอร์สที่เคยเพิ่มแล้ว</label>
                         <input type="hidden" id="courseInput" name="courseInput" value="">
@@ -310,6 +311,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             let coursesData = []; // เก็บข้อมูลคอร์สของทุกเทอม
 
+            // ฟังก์ชัน selectTerm ที่ประกาศในที่นี้จะสามารถเข้าถึงได้
             function selectTerm(termBox) {
                 document.querySelectorAll('.term-item').forEach(item => item.classList.remove('selected'));
                 termBox.classList.add('selected');
@@ -354,7 +356,7 @@
 
             document.querySelectorAll('.term-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    selectTerm(this);
+                    selectTerm(this); // เรียกใช้ฟังก์ชัน selectTerm เมื่อมีการคลิก
                 });
             });
 

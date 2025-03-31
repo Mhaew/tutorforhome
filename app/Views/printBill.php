@@ -183,8 +183,8 @@
                             <td><input type="checkbox" class="checkbox" data-id="<?= esc($row['ID_Study']); ?>"></td>
                             <td><?= esc($row['Firstname_S']) . ' ' . esc($row['Lastname_S']) ?></td>
                             <td><?= esc($row['Course_name']) ?></td>
-                            <td><?= esc($row['Price_DC']) ?> บาท</td>
-                            <td><?= esc($row['Total']) ?> บาท</td>
+                            <td><?= number_format($row['Price_DC']) ?> บาท</td>
+                            <td><?= number_format($row['Total']) ?> บาท</td>
                             <td><?= esc($statusText) ?></td>
                         </tr>
                     <?php endforeach; ?>
@@ -218,7 +218,12 @@
                         <input type="hidden" id="study_id" value="<?= esc($row['ID_Study']) ?>"> <!-- ส่ง ID_Study -->
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="paymentAmount" class="form-label">ยอดที่ต้องการเพิ่ม</label>
+                            <label for="balance" class="form-label">ยอดที่ค้างชำระ (บาท)</label>
+                                <input type="text" class="form-control" id="balance"
+                                    value="<?= isset($row['balance']) ? number_format($row['balance'], 2, '.', '') : '0.00' ?>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="paymentAmount" class="form-label">ยอดที่ต้องการชำระเพิ่ม (บาท)</label>
                                 <input type="number" class="form-control" id="paymentAmount" placeholder="ระบุยอดที่ต้องการเพิ่ม" required>
                             </div>
                         </div>
