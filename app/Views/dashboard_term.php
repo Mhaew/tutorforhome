@@ -221,6 +221,25 @@
                             <!-- สามารถใส่ข้อความหรือปล่อยให้ว่างได้ -->
                         <?php endif; ?>
                     </div><br><br><br><br><br><br><br>
+                    <div class="data-container courses-container">
+                        <label for="courses">คอร์สที่เคยเพิ่มแล้ว</label>
+                        <input type="hidden" id="courseInput" name="courseInput" value="">
+                        <?php if ($session->get('logged_in')) : ?>
+                            <?php if (isset($courses) && is_array($courses)) : ?>
+                                <?php foreach ($courses as $course) : ?>
+                                    <div class="course-item"
+                                        data-id="<?php echo htmlspecialchars($course['id']); ?>"
+                                        data-term-id="<?php echo htmlspecialchars($course['id_term']); ?>"
+                                        onclick="selectCourse(this)">
+                                        <?php echo htmlspecialchars($course['Course_name']); ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <p>ไม่มีข้อมูลคอร์ส</p>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                    </div>
                     <div class="data-container">
                         <div class="courses-list">
                             <h1>รายละเอียดคอร์สเรียน▾</h1>
@@ -289,23 +308,49 @@
     <!-- ฟังก์ชันเลือกเทอม -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let selectedTerm = null;
-            let selectedTermId = null;
-            const coursesData = []; // เก็บข้อมูลคอร์สของทุกเทอม
+            let coursesData = []; // เก็บข้อมูลคอร์สของทุกเทอม
 
             function selectTerm(termBox) {
-                if (selectedTerm) {
-                    selectedTerm.classList.remove('selected');
-                }
-                selectedTerm = termBox;
-                selectedTerm.classList.add('selected');
-                selectedTermId = selectedTerm.dataset.id;
+                document.querySelectorAll('.term-item').forEach(item => item.classList.remove('selected'));
+                termBox.classList.add('selected');
+
+                let selectedTermId = termBox.dataset.id;
                 document.getElementById('termInput').value = selectedTermId;
+
+                document.querySelectorAll('.course-item').forEach(item => item.style.display = 'none');
+                document.querySelectorAll(`.course-item[data-term-id="${selectedTermId}"]`).forEach(item => {
+                    item.style.display = 'block';
+                });
+
+                updateCourseList(selectedTermId);
             }
 
-            function validatePrice(price) {
-                return !isNaN(price) && Number(price) > 0;
+            function updateCourseList(termId) {
+                const courseList = document.querySelector('.courses-list');
+                courseList.innerHTML = `<h1>รายละเอียดคอร์สเรียน▾</h1>`;
+
+                const termData = coursesData.find(course => course.termId === termId);
+                if (termData) {
+                    termData.courses.forEach(course => {
+                        const newCourseItem = document.createElement('div');
+                        newCourseItem.classList.add('course-item');
+
+                        // กำหนดชื่อเทอมจาก termId
+                        const selectedTermElement = document.querySelector(`.term-item[data-id="${termId}"]`);
+                        const termName = selectedTermElement ? selectedTermElement.textContent.trim() : 'ไม่ทราบชื่อเทอม';
+
+                        newCourseItem.innerHTML = `
+                    <strong>เทอม:</strong> <span class="term-name">${termName}</span><br>
+                    <strong>คอร์ส:</strong> <span class="course-name">${course.courseName}</span><br>
+                    <strong>ราคา:</strong> <span class="course-price">${course.price}</span><br>
+                `;
+                        courseList.appendChild(newCourseItem);
+                    });
+                }
             }
+
+            // ซ่อนข้อมูลคอร์สทั้งหมดเมื่อเริ่มต้น
+            document.querySelectorAll('.course-item').forEach(item => item.style.display = 'none');
 
             document.querySelectorAll('.term-item').forEach(item => {
                 item.addEventListener('click', function() {
@@ -317,7 +362,7 @@
             if (addButton) {
                 addButton.addEventListener('click', function() {
                     const termInput = document.getElementById('termInput');
-                    const selectedTermValue = termInput ? termInput.value : null;
+                    const selectedTermValue = termInput.value;
                     const courseNameInput = document.getElementById('Course_name');
                     const priceInput = document.getElementById('Price_DC');
 
@@ -326,18 +371,16 @@
                         return;
                     }
 
-                    const courseName = courseNameInput ? courseNameInput.value.trim() : '';
-                    const price = priceInput ? priceInput.value.trim() : '';
+                    const courseName = courseNameInput.value.trim();
+                    const price = priceInput.value.trim();
 
-                    if (!courseName || !price || !validatePrice(price)) {
+                    if (!courseName || isNaN(price) || Number(price) <= 0) {
                         alert('กรุณากรอกรายละเอียดคอร์สและราคาที่ถูกต้อง');
                         return;
                     }
 
-                    // หาคอร์สในเทอมที่เลือกว่ามีอยู่แล้วหรือไม่
-                    const termIndex = coursesData.findIndex(course => course.termId === selectedTermValue);
+                    let termIndex = coursesData.findIndex(course => course.termId === selectedTermValue);
                     if (termIndex === -1) {
-                        // ถ้าไม่มีเทอมนี้ใน data ให้เพิ่มใหม่
                         coursesData.push({
                             termId: selectedTermValue,
                             courses: [{
@@ -346,48 +389,18 @@
                             }]
                         });
                     } else {
-                        const courseIndex = coursesData[termIndex].courses.findIndex(course => course.courseName === courseName);
-                        if (courseIndex === -1) {
-                            // ถ้าไม่พบคอร์สในเทอมนี้ ให้เพิ่มคอร์สใหม่
-                            coursesData[termIndex].courses.push({
-                                courseName,
-                                price
-                            });
-                        } else {
-                            // ถ้าพบคอร์สแล้ว ให้แก้ไขราคา
-                            coursesData[termIndex].courses[courseIndex].price = price;
-                        }
+                        coursesData[termIndex].courses.push({
+                            courseName,
+                            price
+                        });
                     }
 
-                    // อัปเดต UI
-                    // อัปเดต UI
-                    const courseList = document.querySelector('.courses-list');
-                    if (courseList) {
-                        const newCourseItem = document.createElement('div');
-                        newCourseItem.classList.add('course-item');
+                    updateCourseList(selectedTermValue);
 
-                        // ดึงชื่อเทอมจาก UI โดยใช้ termId ที่ถูกเลือก
-                        const selectedTermElement = document.querySelector(`.term-item[data-id="${selectedTermValue}"]`);
-                        const termName = selectedTermElement ? selectedTermElement.textContent.trim() : 'ไม่ทราบชื่อเทอม';
+                    courseNameInput.value = '';
+                    priceInput.value = '';
 
-                        newCourseItem.innerHTML = `
-                            <strong>เทอม:</strong> <span class="term-name">${termName}</span><br>
-                            <strong>คอร์ส:</strong> <span class="course-name">${courseName}</span><br>
-                            <strong>ราคา:</strong> <span class="course-price">${price}</span><br>
-                        `;
-                        courseList.appendChild(newCourseItem);
-                    }
-
-
-                    // เคลียร์ค่าฟอร์ม
-                    termInput.value = '';
-                    if (courseNameInput) courseNameInput.value = '';
-                    if (priceInput) priceInput.value = '';
-                    document.querySelectorAll('.term-item').forEach(item => item.classList.remove('selected'));
-                    selectedTerm = null;
-                    selectedTermId = null;
-
-                    alert('คอร์สถูกเพิ่มหรืออัปเดตราคาแล้ว!');
+                    alert('คอร์สถูกเพิ่มสำเร็จ!');
                 });
             }
 
@@ -415,7 +428,7 @@
                         const data = await response.json();
                         if (data.success) {
                             alert('ข้อมูลคอร์สทั้งหมดถูกบันทึกแล้ว!');
-                            coursesData.length = 0; // ล้างข้อมูลหลังบันทึกสำเร็จ
+                            coursesData.length = 0;
                             location.reload();
                         } else {
                             alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล');
